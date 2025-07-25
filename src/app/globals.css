@@ -1,13 +1,132 @@
 @import "tailwindcss";
 
 :root {
+  /* Base colors */
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Semantic color system */
+  --color-primary: #3b82f6; /* Blue-500 */
+  --color-primary-hover: #2563eb; /* Blue-600 */
+  --color-primary-light: #60a5fa; /* Blue-400 */
+  --color-primary-dark: #1d4ed8; /* Blue-700 */
+
+  --color-success: #10b981; /* Green-500 */
+  --color-success-hover: #059669; /* Green-600 */
+  --color-success-light: #34d399; /* Green-400 */
+  --color-success-dark: #047857; /* Green-700 */
+
+  --color-warning: #f59e0b; /* Yellow-500 */
+  --color-warning-hover: #d97706; /* Yellow-600 */
+  --color-warning-light: #fbbf24; /* Yellow-400 */
+  --color-warning-dark: #b45309; /* Yellow-700 */
+
+  --color-error: #ef4444; /* Red-500 */
+  --color-error-hover: #dc2626; /* Red-600 */
+  --color-error-light: #f87171; /* Red-400 */
+  --color-error-dark: #b91c1c; /* Red-700 */
+
+  /* Gray scale */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  /* Semantic backgrounds */
+  --color-bg-primary: #1f2937; /* Gray-800 */
+  --color-bg-secondary: #374151; /* Gray-700 */
+  --color-bg-tertiary: #4b5563; /* Gray-600 */
+  --color-bg-overlay: #111827; /* Gray-900 */
+
+  /* Semantic text colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #d1d5db; /* Gray-300 */
+  --color-text-tertiary: #9ca3af; /* Gray-400 */
+  --color-text-muted: #6b7280; /* Gray-500 */
+
+  /* Border colors */
+  --color-border-primary: #4b5563; /* Gray-600 */
+  --color-border-secondary: #374151; /* Gray-700 */
+  --color-border-accent: #3b82f6; /* Blue-500 */
+
+  /* Status colors */
+  --color-buy: #10b981; /* Green-500 */
+  --color-sell: #ef4444; /* Red-500 */
+  --color-neutral: #6b7280; /* Gray-500 */
 }
 
 @theme inline {
+  /* Base colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* Primary colors */
+  --color-blue-400: var(--color-primary-light);
+  --color-blue-500: var(--color-primary);
+  --color-blue-600: var(--color-primary-hover);
+  --color-blue-700: var(--color-primary-dark);
+
+  /* Success colors */
+  --color-green-400: var(--color-success-light);
+  --color-green-500: var(--color-success);
+  --color-green-600: var(--color-success-hover);
+  --color-green-700: var(--color-success-dark);
+
+  /* Warning colors */
+  --color-yellow-400: var(--color-warning-light);
+  --color-yellow-500: var(--color-warning);
+  --color-yellow-600: var(--color-warning-hover);
+  --color-yellow-700: var(--color-warning-dark);
+
+  /* Error colors */
+  --color-red-300: var(--color-error-light);
+  --color-red-400: var(--color-error-light);
+  --color-red-500: var(--color-error);
+  --color-red-600: var(--color-error-hover);
+  --color-red-700: var(--color-error-dark);
+  --color-red-900: var(--color-error-dark);
+
+  /* Gray colors */
+  --color-gray-50: var(--color-gray-50);
+  --color-gray-100: var(--color-gray-100);
+  --color-gray-200: var(--color-gray-200);
+  --color-gray-300: var(--color-gray-300);
+  --color-gray-400: var(--color-gray-400);
+  --color-gray-500: var(--color-gray-500);
+  --color-gray-600: var(--color-gray-600);
+  --color-gray-700: var(--color-gray-700);
+  --color-gray-800: var(--color-gray-800);
+  --color-gray-900: var(--color-gray-900);
+
+  /* Semantic backgrounds */
+  --color-bg-primary: var(--color-bg-primary);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-bg-tertiary: var(--color-bg-tertiary);
+  --color-bg-overlay: var(--color-bg-overlay);
+
+  /* Semantic text colors */
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-tertiary: var(--color-text-tertiary);
+  --color-text-muted: var(--color-text-muted);
+
+  /* Border colors */
+  --color-border-primary: var(--color-border-primary);
+  --color-border-secondary: var(--color-border-secondary);
+  --color-border-accent: var(--color-border-accent);
+
+  /* Status colors */
+  --color-buy: var(--color-buy);
+  --color-sell: var(--color-sell);
+  --color-neutral: var(--color-neutral);
+
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
