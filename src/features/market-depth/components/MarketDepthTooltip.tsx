@@ -1,13 +1,5 @@
 import React from "react";
-
-interface MarketDepthTooltipProps {
-  active?: boolean;
-  payload?: Array<{
-    value: number;
-    payload: { side: string };
-  }>;
-  label?: string;
-}
+import { MarketDepthTooltipProps } from "../types/marketDepth";
 
 export const MarketDepthTooltip: React.FC<MarketDepthTooltipProps> = ({
   active,

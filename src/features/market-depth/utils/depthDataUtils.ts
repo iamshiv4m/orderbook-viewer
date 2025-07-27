@@ -1,11 +1,5 @@
 import { OrderbookData } from "../../orderbook/types/orderbook";
-
-export interface DepthDataPoint {
-  price: number;
-  size: number;
-  side: string;
-  cumulative: number;
-}
+import { DepthDataPoint } from "../types/marketDepth";
 
 /**
  * Prepares orderbook data for market depth chart visualization

@@ -1,6 +1,5 @@
 "use client";
 
-import { OrderbookData } from "../../orderbook/types/orderbook";
 import {
   AreaChart,
   Area,
@@ -12,10 +11,7 @@ import {
 } from "recharts";
 import { MarketDepthTooltip } from "./MarketDepthTooltip";
 import { prepareDepthData } from "../utils/depthDataUtils";
-
-interface MarketDepthChartProps {
-  orderbookData: OrderbookData;
-}
+import { MarketDepthChartProps } from "../types/marketDepth";
 
 export default function MarketDepthChart({
   orderbookData,
