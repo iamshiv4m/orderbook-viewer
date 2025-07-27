@@ -10,6 +10,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { MarketDepthTooltip } from "./MarketDepthTooltip";
+import { prepareDepthData } from "../utils/depthDataUtils";
 
 interface MarketDepthChartProps {
   orderbookData: OrderbookData;
@@ -18,58 +20,7 @@ interface MarketDepthChartProps {
 export default function MarketDepthChart({
   orderbookData,
 }: MarketDepthChartProps) {
-  // Prepare data for the depth chart
-  const prepareDepthData = () => {
-    const asks = orderbookData.asks
-      .slice(0, 20)
-      .reverse()
-      .map((ask, index) => ({
-        price: ask.price,
-        size: ask.total,
-        side: "ask",
-        cumulative: orderbookData.asks
-          .slice(0, 20 - index)
-          .reduce((sum, level) => sum + level.total, 0),
-      }));
-
-    const bids = orderbookData.bids.slice(0, 20).map((bid, index) => ({
-      price: bid.price,
-      size: bid.total,
-      side: "bid",
-      cumulative: orderbookData.bids
-        .slice(0, index + 1)
-        .reduce((sum, level) => sum + level.total, 0),
-    }));
-
-    return [...asks, ...bids].sort((a, b) => a.price - b.price);
-  };
-
-  const depthData = prepareDepthData();
-
-  const CustomTooltip = ({
-    active,
-    payload,
-    label,
-  }: {
-    active?: boolean;
-    payload?: Array<{ value: number; payload: { side: string } }>;
-    label?: string;
-  }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="bg-bg-overlay border border-border-secondary rounded-lg p-3">
-          <p className="text-text-primary font-medium">Price: ${label}</p>
-          <p className="text-text-secondary">
-            Cumulative Size: {payload[0].value.toFixed(4)}
-          </p>
-          <p className="text-text-secondary">
-            Side: {payload[0].payload.side === "ask" ? "Ask" : "Bid"}
-          </p>
-        </div>
-      );
-    }
-    return null;
-  };
+  const depthData = prepareDepthData(orderbookData);
 
   return (
     <div className="h-64">
@@ -93,7 +44,7 @@ export default function MarketDepthChart({
             tick={{ fontSize: 12 }}
             tickFormatter={(value) => value.toFixed(2)}
           />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<MarketDepthTooltip />} />
           <Area
             type="monotone"
             dataKey="cumulative"
