@@ -38,6 +38,7 @@ export type {
 } from "./types/orderbook";
 
 // Utils
+export { isSimulatedOrderLevel } from "./utils/orderbookUtils";
 export {
   StringUtils,
   isVenue,

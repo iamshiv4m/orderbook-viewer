@@ -1,7 +1,12 @@
 "use client";
 
 import { OrderbookData, SimulatedOrder } from "../types/orderbook";
-import { formatPrice, formatSize, formatTotal } from "../../../shared/utils/formatters";
+import {
+  formatPrice,
+  formatSize,
+  formatTotal,
+} from "../../../shared/utils/formatters";
+import { isSimulatedOrderLevel } from "../utils/orderbookUtils";
 
 interface OrderbookTableProps {
   orderbookData: OrderbookData;
@@ -12,22 +17,6 @@ export default function OrderbookTable({
   orderbookData,
   simulatedOrder,
 }: OrderbookTableProps) {
-  const isSimulatedOrderLevel = (price: number, side: "bid" | "ask") => {
-    if (!simulatedOrder) return false;
-
-    if (simulatedOrder.type === "market") return false;
-
-    if (side === "bid" && simulatedOrder.side === "buy") {
-      return Math.abs(price - (simulatedOrder.price || 0)) < 0.01;
-    }
-
-    if (side === "ask" && simulatedOrder.side === "sell") {
-      return Math.abs(price - (simulatedOrder.price || 0)) < 0.01;
-    }
-
-    return false;
-  };
-
   return (
     <div className="bg-bg-primary rounded-lg p-4">
       <h3 className="text-lg font-semibold mb-4">Orderbook Levels</h3>
@@ -41,7 +30,7 @@ export default function OrderbookTable({
               <div
                 key={`ask-${index}`}
                 className={`flex justify-between text-sm p-1 rounded ${
-                  isSimulatedOrderLevel(ask.price, "ask")
+                  isSimulatedOrderLevel(ask.price, "ask", simulatedOrder)
                     ? "bg-warning/20 border border-warning/50"
                     : "hover:bg-bg-secondary/50"
                 }`}
@@ -66,7 +55,7 @@ export default function OrderbookTable({
               <div
                 key={`bid-${index}`}
                 className={`flex justify-between text-sm p-1 rounded ${
-                  isSimulatedOrderLevel(bid.price, "bid")
+                  isSimulatedOrderLevel(bid.price, "bid", simulatedOrder)
                     ? "bg-warning/20 border border-warning/50"
                     : "hover:bg-bg-secondary/50"
                 }`}
