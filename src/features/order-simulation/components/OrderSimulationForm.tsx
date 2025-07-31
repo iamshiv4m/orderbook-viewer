@@ -4,8 +4,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Venue, SimulatedOrder } from "../../orderbook/types/orderbook";
+import { SimulatedOrder, Venue } from "../../orderbook/types/orderbook";
 import { Play, Settings } from "lucide-react";
+import {
+  OrderSimulationFormProps,
+  OrderFormData,
+} from "../types/orderSimulation";
 
 const orderFormSchema = z.object({
   venue: z.enum(["OKX", "Bybit", "Deribit"]),
@@ -16,14 +20,6 @@ const orderFormSchema = z.object({
   quantity: z.number().positive("Quantity must be positive"),
   timing: z.enum(["immediate", "5s", "10s", "30s"]),
 });
-
-type OrderFormData = z.infer<typeof orderFormSchema>;
-
-interface OrderSimulationFormProps {
-  selectedVenue: Venue;
-  onVenueChange: (venue: Venue) => void;
-  onOrderSimulate: (order: SimulatedOrder | null) => void;
-}
 
 export default function OrderSimulationForm({
   selectedVenue,

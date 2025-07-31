@@ -7,6 +7,14 @@ export { default as OrderImpactMetrics } from "./components/OrderImpactMetrics";
 export { default as OrderSimulationFormSkeleton } from "./components/OrderSimulationFormSkeleton";
 export { default as OrderImpactMetricsSkeleton } from "./components/OrderImpactMetricsSkeleton";
 
+// Types
+export type {
+  OrderImpactMetricsProps,
+  OrderSimulationFormProps,
+  OrderFormData,
+  ImpactMetrics,
+} from "./types/orderSimulation";
+
 // Types (re-exported from orderbook feature)
 export type {
   Venue,
@@ -18,6 +26,7 @@ export type {
 } from "../orderbook/types/orderbook";
 
 // Utils
+export { calculateImpactMetrics } from "./utils/impactCalculationUtils";
 export { StringValidationUtils } from "../../shared/utils/strings/stringValidation";
 export {
   formatPrice,
